@@ -5,7 +5,7 @@
         <article class="mb-5">
             <ul>
                 <li>
-                    <a href="/categories/{{ $category['slug'] }}">{{ $category['name'] }}</a>
+                    <a href="/categories/{{ $category['slug'] }}" class="text-decoration-none">{{ $category['name'] }}</a>
                 </li>
             </ul>
     @endforeach
