@@ -6,10 +6,10 @@
 
                 <h2 class="mb-2">{{ $post->title }}</h2>
                 {{-- <h5>{{ $post['author'] }}</h5> --}}
-                <p>By. <a href="/authors/{{ $post->author->username }}"
+                <p>By. <a href="/posts/?author={{ $post->author->username }}"
                         class="text-decoration-none">{{ $post->author->name }}</a>
                     in
-                    <a href="/categories/{{ $post->category->slug }}"
+                    <a href="/posts/?category={{ $post->category->slug }}"
                         class="text-decoration-none">{{ $post->category->name }}</a>
 
                 </p>
@@ -18,7 +18,7 @@
                 <article class="my-3 fs-5">
                     {!! $post->body !!}
                 </article>
-                <a href="/blog" class="d-block">Back to posts</a>
+                <a href="/posts" class="d-block">Back to posts</a>
             </div>
         </div>
     </div>
