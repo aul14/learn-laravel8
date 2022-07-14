@@ -1,16 +1,17 @@
 @extends('dashboard.layouts.main')
 @section('container')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Create New Posts</h1>
+        <h1 class="h2">Edit Posts</h1>
     </div>
 
     <div class="col-lg-8">
-        <form method="post" action="/dashboard/posts" class="mb-4">
+        <form method="post" action="/dashboard/posts/{{ $post->slug }}" class="mb-4">
+            @method('put')
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control @error('title') is-invalid @enderror" required autofocus
-                    id="title" name="title" value="{{ old('title') }}">
+                    id="title" name="title" value="{{ old('title', $post->title) }}">
                 @error('title')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -20,7 +21,7 @@
             <div class="mb-3">
                 <label for="slug" class="form-label">Slug</label>
                 <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"
-                    value="{{ old('slug') }}">
+                    value="{{ old('slug', $post->slug) }}">
                 @error('slug')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -31,7 +32,8 @@
                 <label for="category" class="form-label">Category</label>
                 <select id="category" class="form-select" name="category_id">
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                        <option value="{{ $category->id }}"
+                            {{ old('category_id', $post->category_id) == $category->id ? 'selected' : '' }}>
                             {{ $category->name }}</option>
                     @endforeach
                 </select>
@@ -41,7 +43,7 @@
                 @error('body')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
-                <input id="body" type="hidden" name="body" value="{{ old('body') }}">
+                <input id="body" type="hidden" name="body" value="{{ old('body', $post->body) }}">
                 <trix-editor input="body"></trix-editor>
             </div>
 
