@@ -33,14 +33,14 @@ Route::get('/about', function () {
         'email' => 'auldoang17@gmail.com',
         'image' => 'default.jpg'
     ]);
-})->middleware('guest');
+});
 
 
 
-Route::get('/posts', [PostController::class, 'index'])->middleware('guest');
+Route::get('/posts', [PostController::class, 'index']);
 
 // Halaman single post
-Route::get('/posts/{post:slug}', [PostController::class, 'show'])->middleware('guest');
+Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
 Route::get('/categories', function () {
     return view('categories', [
@@ -48,7 +48,7 @@ Route::get('/categories', function () {
         'active'  => 'categories',
         'categories' => Category::all(),
     ]);
-})->middleware('guest');
+});
 
 
 
