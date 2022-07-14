@@ -25,11 +25,11 @@
             @if ($posts[0]->image)
                 <div style="max-height: 400px;overflow: hidden;">
                     <img src="{{ asset("storage/{$posts[0]->image}") }}" alt="{{ $posts[0]->category->name }}"
-                        class="card-img-top">
+                        class="card-img-top img-fluid">
                 </div>
             @else
-                <img src="https://source.unsplash.com/1200x400/?{{ $posts[0]->category->name }}" class="card-img-top"
-                    alt="...">
+                <img src="https://source.unsplash.com/1200x400/?{{ $posts[0]->category->name }}"
+                    class="card-img-top img-fluid" alt="...">
             @endif
 
             <div class="card-body">
@@ -61,10 +61,10 @@
                             </div>
                             @if ($post->image)
                                 <img src="{{ asset("storage/{$post->image}") }}" alt="{{ $post->category->name }}"
-                                    class="card-img-top">
+                                    class="card-img-top img-fluid">
                             @else
                                 <img src="https://source.unsplash.com/500x400/?{{ $post->category->name }}"
-                                    class="card-img-top" alt="...">
+                                    class="card-img-top img-fluid" alt="...">
                             @endif
 
                             <div class="card-body">
